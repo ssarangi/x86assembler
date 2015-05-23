@@ -40,22 +40,22 @@ public:
     ~X86Assembler() {}
 
 #define X(INST_ENUM, INST_TYPE, OPCODE) \
-    template <typename OPERAND1, typename OPERAND2> \
-    void emit##INST_ENUM(OPERAND1 op1, OPERAND2 op2) { x86##INST_ENUM inst; return emit##INST_TYPE(inst, op1, op2); }
+    template <typename ... OPERANDS> \
+    void emit##INST_ENUM(OPERANDS... ops) { x86##INST_ENUM inst; return emit##INST_TYPE(inst, ops...); }
 #include "x86instset.h"
 #undef X
 
     bytestream& getByteStream() { return m_bytes; }
 
 private:
-    template <typename INST_ENUM_TYPE, typename OPERAND1, typename OPERAND2>
-    void emitOneByteInst(INST_ENUM_TYPE inst, OPERAND1 op1, OPERAND2 op2)
+    template <typename INST_ENUM_TYPE, typename... OPERANDS>
+    void emitOneByteInst(INST_ENUM_TYPE inst, OPERANDS... ops)
     {
         assert(0 && "invalid type passed");
     }
 
-    template <typename INST_ENUM_TYPE, typename OPERAND1, typename OPERAND2>
-    void emitTwoByteInst(INST_ENUM_TYPE inst, OPERAND1 op1, OPERAND2 op2)
+    template <typename INST_ENUM_TYPE, typename... OPERANDS>
+    void emitTwoByteInst(INST_ENUM_TYPE inst, OPERANDS... ops)
     {
         assert(0 && "invalid type passed");
     }
