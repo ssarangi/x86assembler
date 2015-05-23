@@ -77,6 +77,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="x86jitter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="x86assembler.h" />
+    <ClInclude Include="x86instset.h" />
+    <ClInclude Include="x86instoperand.h" />
+    <ClInclude Include="x86jitter.h" />
+    <ClInclude Include="x86regs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
